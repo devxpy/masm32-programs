@@ -16,9 +16,9 @@ int 21h
 ## register usage
 
 - binary search
-  - `BX` - lower position
+  - `BX` - lower position = `1`
   - `CX` - element to search
-  - `DX` - upper position
+  - `DX` - upper position = `len`
   - `AX` - current position = `(BX + DX) / 2`
   - `SI` - double-index for array = `2 * (AX - 1)`
 
@@ -35,7 +35,7 @@ int 21h
   - `BX` for printing out char stored in `AX`
 
 - sort
-  - `CX` - outer loop position
+  - `CX` - outer loop position = `2` to `len`
   - `DX` - inner loop index = `CX - 1`
   - `SI` - inner loop array double-index = `2DX`
   - `DI` - to swap `SI - 2` and `SI`
