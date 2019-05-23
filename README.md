@@ -36,8 +36,8 @@ int 21h
 
 - sort
   - `CX` - outer loop position
-  - `DX` - inner loop index
-  - `SI` - inner loop array double-index
+  - `DX` - inner loop index = `CX - 1`
+  - `SI` - inner loop array double-index = `2DX`
   - `DI` - to swap `SI - 2` and `SI`
 
 ## magic
