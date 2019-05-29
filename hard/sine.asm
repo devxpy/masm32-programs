@@ -64,4 +64,5 @@ endm
         mov dx, cwr
         mov al, cw
         out dx, al
+        ret
 end

@@ -15,7 +15,7 @@ void cmd(int c) {
   IOCLR0 = EN;
 }
 
-// DATA mode  RW=0, En=1 then EN=0
+// DATA mode  RW=0, RS=1, En=1 then EN=0
 void data(char d) {
   IOPIN0 = d << 15; // Sending data to data pins
   IOCLR0 = RW;
