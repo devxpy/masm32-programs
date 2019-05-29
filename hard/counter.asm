@@ -41,25 +41,25 @@ endm
     mov al, 00H
 
     up:
-    call outpa
+        call outpa
 
-    add al, 01H
-    daa
-    cmp al, 05H
-    jb up
+        add al, 01H
+        daa
+        cmp al, 05H
+        jb up
 
     down:
-    call outpa
+        call outpa
 
-    sub al, 01H
-    daa
+        sub al, 01H
+        daa
 
-    cmp al, 00H
-    ja down
+        cmp al, 00H
+        ja down
 
     exit
 
-    delay proc
+    delay:
         mov bx, 0010h
         mov cx, 0ffffh
 
@@ -73,9 +73,8 @@ endm
         jne outer
 
         ret
-    delay endp
 
-    kbhit proc
+    kbhit:
         push ax
         mov ah, 01h
         int 16h
@@ -84,10 +83,9 @@ endm
         ret
 
         done:
-        exit
-    kbhit endp
+            exit
 
-    outpa proc
+    outpa:
         push ax
 
         mov dl, al
@@ -103,5 +101,4 @@ endm
 
         pop ax
         ret
-    outpa endp
 end
