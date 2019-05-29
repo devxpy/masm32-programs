@@ -45,7 +45,8 @@ endm
 
         add al, 01H
         daa
-        cmp al, 99H
+
+        cmp al, 05H
         jb up
 
     down:
@@ -63,8 +64,7 @@ endm
         mov bx, 0010h
         mov cx, 0ffffh
 
-        outer:
-        
+        outer:        
             inner:
             loop inner
         
