@@ -5,13 +5,26 @@ mov ah, <function>
 int 21h
 ```
 
-- `1` - read 1 char from keyboard into `AL`:
+- `1` - read char from keyboard into `AL`
+- `8` - read char without echo into `AL`
+
 - `2` - print character from `DL`
 - `9` - print string from `DX`
+
 - `4C` - exit
+
 - `CLD; REPE CMPSB` - compare strings at `SI` and `DI`
+
 - `2C` - get time (`CH` - Hours, `CL` - Minutes)
 - `2A` - get date (`DH` - Day, `DL` - Month, `CH`+`CL` - Year). Also, remeber to add `0C30H` to `CX`
+
+## Other functions
+
+- `1` with `int 16H` - read status of keyboard buffer.
+- `mul <register>` - `AX = AL * <register>`
+
+- `out dx, al` - output al into addr at dx
+- `in al, dx` - input addr at dx int al
 
 ## register usage
 

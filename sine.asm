@@ -1,62 +1,59 @@
-INITDS MACRO        
-    MOV AX,@DATA                
-    MOV DS,AX                           
-ENDM
+.model small
+.stack
+.data
+    pa equ 1c60h
+    cwr equ 1c63h
+    cw equ 82h
 
-INIT8255 MACRO
-    MOV AL,CW
-    MOV DX,CR
-    OUT DX,AL
-ENDM
-
-OUTPA MACRO
-    MOV DX,PA
-    OUT DX,AL
-ENDM
-
-.MODEL SMALL
-.STACK
-.DATA
-    PA EQU 1c60H        
-    CR EQU 1c63H
-    CW DB 82H
-    TABLE DB 80H,96H,0ABH,0C0H,0D2H,0E2H,0EEH,0F8H,0FEH,0FFH
+    table db 80H,96H,0ABH,0C0H,0D2H,0E2H,0EEH,0F8H,0FEH,0FFH
     DB 0FEH,0F8H,0EEH,0E2H,0D2H,0C0H,0ABH,96H,80H
     DB 69H,54H,40H,2DH,1DH,11H,07H,01H,00H
     DB 01H,07H,11H,1DH,2DH,40H,54H,69H,80H
-    MSG DB 10,13,"PRESS ANY KEY TO EXIT $"
-.CODE   
-    INITDS
-    INIT8255
-    LEA DX,MSG
-    MOV AH,9
-    INT 21H
 
-    START:
-    MOV CX,25H      
-    LEA SI,TABLE        
-    
-    BACK:   
-    MOV AL,[SI]            
+    msg db "Press any key to exit", 10, 13, '$'
+.code
+    call init
 
-    OUTPA                   
-    CALL DELAY
-    INC SI              
-    LOOP BACK           
+    start:
+        mov cx, 25h
+        lea si, table
 
-    MOV AH,1
-    INT 16H             
-    JZ START
+    write_loop:
+        mov al, [si]
+        call outpa
+        call delay
+        inc si
+        loop write_loop
 
-    MOV AH,4CH
-    INT 21H
+    mov ah, 01h
+    int 16h
+    jz start
 
-    DELAY PROC
-    MOV BX,0FFFH            
-    
-    L2:   
-    DEC BX
-    JNZ L2
-    RET
-    DELAY ENDP
-END
+    call exit
+
+    exit:
+        mov ah, 4ch
+        int 21h
+        ret
+
+    delay:
+        push cx
+        mov cx, 0ffffh
+        delay_loop:
+            loop delay_loop
+        pop cx
+        ret
+
+    outpa:
+        mov dx, pa
+        out dx, al
+        ret
+
+    init:
+        mov ax, @data
+        mov ds, ax
+
+        mov dx, cwr
+        mov al, cw
+        out dx, al
+end
