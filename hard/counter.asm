@@ -45,7 +45,7 @@ endm
 
         add al, 01H
         daa
-        cmp al, 05H
+        cmp al, 99H
         jb up
 
     down:
