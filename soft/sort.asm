@@ -19,33 +19,33 @@ endm
     mov cx, 2
 
     outer:
-    mov dx, cx
-    dec dx
-    
-    mov si, dx
-    add si, si
+        mov dx, cx
+        dec dx
+        
+        mov si, dx
+        add si, si
 
-    mov ax, array[si]
+        mov ax, array[si]
 
-    inner:
-    cmp array[si - 2], ax
-    jbe break
+        inner:
+            cmp array[si - 2], ax
+            jbe break
 
-    mov di, array[si - 2]
-    mov array[si], di
+            mov di, array[si - 2]
+            mov array[si], di
 
-    dec si
-    dec si
+            dec si
+            dec si
 
-    dec dx
-    jnz inner
+            dec dx
+            jnz inner
 
-    break:
-    mov array[si], ax
-
-    inc cx
-    cmp cx, len
-    jbe outer
+        break:
+            mov array[si], ax
+           
+            inc cx
+            cmp cx, len
+            jbe outer
 
     exit
 end    

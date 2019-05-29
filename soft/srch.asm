@@ -33,12 +33,16 @@ endm
     cmp bx, dx
     ja not_found
 
+    ; ax = bx + dx / 2
     mov ax, bx
     add ax, dx
     shr ax, 1
+
+    ; si = 2 * (ax - 1)
     mov si, ax
     dec si
     add si, si
+
     cmp cx, array[si]
     jae above
 

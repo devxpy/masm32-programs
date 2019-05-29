@@ -62,6 +62,7 @@ int 21h
     | `dx` | inner loop index = `cx - 1`              |
     | `si` | inner loop array double-index = `2 * dx` |
     | `di` | to swap `si - 2` and `si`                |
+    | `ax` | element at `array[si]`                   |
 
 - palindrome
 
