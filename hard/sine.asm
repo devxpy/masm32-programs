@@ -1,3 +1,9 @@
+print macro msg
+    lea dx, msg
+    mov ah, 09h
+    int 21h
+endm
+
 .model small
 .stack
 .data
@@ -14,6 +20,8 @@
 .code
     call init
 
+    print msg
+    
     start:
         mov cx, 25h
         lea si, table
