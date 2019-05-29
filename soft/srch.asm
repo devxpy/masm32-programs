@@ -47,23 +47,23 @@ endm
     jae above
 
     below:
-    dec ax
-    mov dx, ax
-    jmp searchloop
+        dec ax
+        mov dx, ax
+        jmp searchloop
 
     above:
-    je found
-    inc ax
-    mov bx, ax
-    jmp searchloop
+        je found
+        inc ax
+        mov bx, ax
+        jmp searchloop
 
     found:
-    add al, '0'
-    mov result, al
-    print found_msg
-    exit
+        add al, '0'
+        mov result, al
+        print found_msg
+        exit
 
     not_found:
-    print not_found_msg
-    exit
+        print not_found_msg
+        exit
 end    

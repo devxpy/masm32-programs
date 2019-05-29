@@ -56,13 +56,13 @@ int 21h
     | `si` | double-index for array = `2 * (ax - 1)` |
 - sort
 
-    |      |                                          |
-    | ---- | ---------------------------------------- |
-    | `cx` | outer loop position = `2` to `len`       |
-    | `dx` | inner loop index = `cx - 1`              |
-    | `si` | inner loop array double-index = `2 * dx` |
-    | `di` | to swap `si - 2` and `si`                |
-    | `ax` | element at `array[si]`                   |
+    |      |                                                              |
+    | ---- | ------------------------------------------------------------ |
+    | `cx` | outer loop position = `2` to `len`                           |
+    | `dx` | inner loop index = `cx - 1` to `0`                           |
+    | `si` | inner loop array double-index = `2 * dx`                     |
+    | `di` | to swap `si - 2` and `si`                                    |
+    | `ax` | element at `array[si]` <br />(element to compare in insertion sort loop) |
 
 - palindrome
 
