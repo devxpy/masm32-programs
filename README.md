@@ -111,7 +111,7 @@ int 21h
     | `0 << 13`                         | `RS`                             |
     | `0xff << 15`                      | `DATA`                           |
     | `IOPIN0 = x << 15`                | send data/char to pin            |
-    | `IODIR1 | EN | RW | RS | DATA`    | `IODIR1`                         |
+    | `IODIR1 or EN or RW or RS or DATA` | `IODIR1`                         |
     | `38`, `E`, `1`, `8c`              | commands sent for initialization |
     | `RS=0`, `RW=0`, `EN=0` ->  `EN=1` | cmd mode                         |
     | `RS=1`, `RW=0`, `EN=0` ->  `EN=1` | data mode                        |
@@ -121,15 +121,15 @@ int 21h
 
 - motor (c)
 
-    |                             |          |
-    | --------------------------- | -------- |
-    | `0 << 27`                   | `PIN1`   |
-    | `0 << 28`                   | `PIN2`   |
-    | `0 << 29`                   | `PIN3`   |
-    | `0 << 30`                   | `PIN4`   |
-    | `PIN1 | PIN2 | PIN3 | PIN4` | `IODIR1` |
-    | `IOSET1`                    |          |
-    | `IOCLR1`                    |          |
+    |                                |          |
+    | ------------------------------ | -------- |
+    | `0 << 27`                      | `PIN1`   |
+    | `0 << 28`                      | `PIN2`   |
+    | `0 << 29`                      | `PIN3`   |
+    | `0 << 30`                      | `PIN4`   |
+    | `PIN1 or PIN2 or PIN3 or PIN4` | `IODIR1` |
+    | `IOSET1`                       |          |
+    | `IOCLR1`                       |          |
 
 
 
