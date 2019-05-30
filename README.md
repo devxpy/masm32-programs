@@ -112,7 +112,7 @@ int 21h
     | `0xff << 15`                       | `DATA`                           |
     | `IOPIN0 = x << 15`                 | send data/char to pin            |
     | `IODIR1 \| EN \| RW \| RS \| DATA` | `IODIR1`                         |
-    | `38`, `E`, `1`, `8c`               | commands sent for initialization |
+    | `38`, `E`, `1`, `80`               | commands sent for initialization |
     | `RS=0`, `RW=0`, `EN=0` ->  `EN=1`  | cmd mode                         |
     | `RS=1`, `RW=0`, `EN=0` ->  `EN=1`  | data mode                        |
     | `c0`                               | bring cursor down                |
