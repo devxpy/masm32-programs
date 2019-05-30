@@ -164,7 +164,7 @@ int 21h
 
 - sine wave
 
-  Magic Formula = `180 + 180 * sin(x)` (in degrees)
+  Magic Formula = `128 + 128 * sin(x)` (in degrees)
 
   `25h` values  (from `0` to `360` degrees)
 
